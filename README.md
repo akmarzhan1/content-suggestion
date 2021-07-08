@@ -1,4 +1,4 @@
-# Welcome to CS162 Final Project
+# Welcome to the Content Suggestion tool
 
 Welcome to the Content Suggestion Team Project! You have two options to access this project: through Heroku and by manually downloading and running locally.
 
