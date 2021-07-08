@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap");
+
+/* main text */
+body {
+  background: #fafafa;
+  font-family: "Pathway Gothic One";
+  color: #333333;
+  font-size: 25px;
+  line-height: 1em;
+  background-color: #000000;
+  width: 100%;
+  margin-top: 3%;
+  height: fit-content;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* responsive layout */
+@media screen and (max-width: 1000px) {
+  body {
+    margin-top: 10%;
+  }
+  .right {
+    margin-bottom: 30%;
+  }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding: 20px;
+  background-color: #000000;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.home {
+  padding: 5%;
+}
+
+/* headers */
+
+h1 {
+  color: #ffffff;
+}
+
+h2 {
+  text-align: center;
+  color:#1DD93B;
+  letter-spacing: 4px;
+}
+
+h2.white {
+  color: #ffffff;
+  text-align: left;
+}
+
+/* paragraphs */
+
+p {
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+p.bottom-margin {
+  padding-bottom: 40px;
+  text-align: left;
+}
+
+a {
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+a:hover {
+  color: #1DD93B;
+}
+
+
+hr {
+  background-color: #1DD93B;
+}
+
+/* buttons */
+
+button {
+  background-color: #1DD93B;
+  color: #ffffff;
+  padding: 10px 16px; 
+  border-radius: 15px;
+  border: 0px #000000;
+  outline: none;
+}
+
+button:hover {
+  background-color: #16a12d;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.clear {
+  background-color: #000000;
+  border: #000000;
+  color: #bbc4c9;
+}
+
+button.clear:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.btn {
+  background-color: #1dce3a;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn:hover {
+  background-color: #16a12d;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 30px;
+}
+
+/* form formatting */
+
+div.form {
+  margin: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  padding: 40px;
+  left: auto;
+  right: auto;
+  border-radius: 20px;
+  background-color: rgba(34, 30, 30, 0.8);
+}
+
+div.form_login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  border-radius: 20px;
+  background-color: rgba(34, 30, 30, 0.8);
+}
+
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid #1DD93B;
+  border-radius: 10px;
+  font-size: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input:focus {
+  border: 2px solid #334436;
+  border-radius: 10px;
+  outline: 0px;
+}
+
+input[submit] {
+  background-color: #1DD93B;
+}
+
+/* navbar formatting */ 
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.navbar-brand {
+  font-size: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.bg-dark {
+  background-color: #000000!important;
+}
+
+/* column formatting */
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 0 8px;
+}
+
+img.circle {
+  border-radius: 50%;
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+}
+
+.left {
+  width: calc(60% - (.5em + 6px));
+  float: left;
+  min-height: 400px;
+  margin-top: 1em;
+}
+
+.right {
+  width: calc(40% - (.5em + 6px));
+  float: right;
+  min-height: 400px;
+  margin-top: 1em;
+}

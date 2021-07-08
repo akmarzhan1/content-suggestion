@@ -1,0 +1,223 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <title>SuggestMe | Insights</title>
+</head>
+
+{% extends "_header.html" %} {% block content %}
+
+{{ super() }}
+
+{% include '_side-menu.html' %}
+
+
+<div class="right_70">
+    <div class="heading">
+        <h4 class="green" style="padding:20px 0px 10px 0px">Hello {{current_user.username}}, welcome back!</h4>
+        <h3>Here are your latest insights</h3>
+        <p class='black'>We analyzed the last 30 posts from your account and made the following report. The + signs mean how much more
+            engagement the posts get on average. The data is updated every 5 minutes. </p>
+    </div>
+    <!-- TO DO: refactor these to use for loops? -->
+    <div class="left_50">
+        <!-- left insights -->
+        <!-- most popular posts -->
+        <div class="grid-container">
+            <div class="grid-item-desc">
+                <h5 class="black">Most popular posts</h5>
+            </div>
+            <div class="grid-item-like">
+                <h5 class="black">❤</h5>
+            </div>
+            <div class="grid-item-comment">
+                <h5 class="black">💬</h5>
+            </div>
+            {% if dates == None %}
+            <div class="grid-item-desc">
+                <h6 class="black">Not enough data.</a></h6>
+                <p class="desc"> You don't have enough data for now, come back when you post more! If you have enough posts, please try reloading in a few minutes!</p>
+            </div>
+            {% else %}
+            <div class="grid-item-desc">
+                <h6 class="black">{{dates[0]}} <a href={{links[0]}}>🔗</a></h6>
+                <p class="desc"> {{captions[0]}}...</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">+{{likes[0]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">+{{comments[0]}}</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">{{dates[1]}} <a href={{links[1]}}>🔗</a></h6>
+                <p class="desc"> {{captions[1]}}...</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">+{{likes[1]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">+{{comments[1]}}</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">{{dates[2]}} <a href={{links[2]}}>🔗</a></h6>
+                <p class="desc"> {{captions[2]}}...</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">+{{likes[2]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">+{{comments[2]}}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+
+    <!-- right insights top-->
+    <div class="right_50">
+        <div class="grid-container-2" style="margin-bottom:10%">
+            {% if posts_update==None %}
+            <div class="grid-item-stats">
+                <p class="white">Try again in a few minutes!</p>
+            </div>
+            {% elif posts_update > 0 %}
+            <div class="grid-item-stats">
+                <p class="num">{{posts_update}}</p>
+                <p class="white">More Posts This Week Compared to Last Week</p>
+            </div>
+            {% else %}
+            <div class="grid-item-stata" style="background-color: #1d5fd9;">
+                <p class="num">{{posts_update}}</p>
+                <p class="white">Less Posts This Week Compared to Last Week</p>
+            </div>
+            {% endif %}
+            {% if likes_update == None %}
+            <div class="grid-item-stats">
+                <p class="white">Try again in a few minutes! </p>
+            </div>
+            {% elif likes_update > 0 %}
+            <div class="grid-item-stats">
+                <p class="num">{{likes_update}}</p>
+                <p class="white">More Likes This Week Compared to Last Week</p>
+            </div>
+            {% else %}
+            <div class="grid-item-stats" style="background-color: #1d5fd9;">
+                <p class="num">{{likes_update}}</p>
+                <p class="white">Less Likes This Week Compared to Last Week</p>
+            </div>
+            {% endif %}
+            {% if followers == None %}
+            <div class="grid-item-large">
+                <p class="white" style='vertical-align: middle;'>Please try again in a few minutes!</p>
+            </div>
+            {% else %}
+            <div class="grid-item-large">
+                <p class="white">You have</p>
+                <p class="num">{{followers}}</p>
+                <p class="white">followers so far! Keep going!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+
+    <div class="left_50">
+        <!-- most popular hashtags-->
+        <div class="grid-container">
+            <div class="grid-item-desc">
+                <h5 class="black">Most popular hashtags</h5>
+            </div>
+            <div class="grid-item-like">
+                <h5 class="black">❤</h5>
+            </div>
+            <div class="grid-item-comment">
+                <h5 class="black">💬</h5>
+            </div>
+            {% if hasht == None %}
+            <div class="grid-item-desc">
+                <h6 class="black">Not enough data.</a></h6>
+                <p class="desc"> You don't have enough data for now, come back when you post more! If you have enough posts, please try reloading in a few minutes!</p>
+            </div>
+            {% else %}
+            <div class="grid-item-desc">
+                <h6 class="black">#{{hasht[0]}}</h6>
+                <p class="desc"> You used this hashtag {{count_res[0]}} times.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">{{likes_res[0]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">{{comments_res[0]}}</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">#{{hasht[1]}}</h6>
+                <p class="desc">You used this hashtag {{count_res[1]}} times.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">{{likes_res[1]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">{{comments_res[1]}}</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">#{{hasht[2]}}</h6>
+                <p class="desc">You used this hashtag {{count_res[2]}} times.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">{{likes_res[2]}}</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">{{comments_res[2]}}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- right insights bottom -->
+    <div class="right_50">
+        <div class="grid-container-2">
+            {% if posts==None %}
+            <div class="grid-item-large-left">
+                <p class="white" style='vertical-align: middle;'>Please try again in a few minutes!</p>
+            </div>
+            {% else %}
+            <div class="grid-item-large-left">
+                <p class="white">You have</p>
+                <p class="num">{{posts}}</p>
+                <p class="white">posts so far!</p>
+            </div>
+            {% endif %}
+            {% if avg_likes_update == None %}
+            <div class="grid-item-stats-right">
+                <p class="white">Please try again in a few minutes!</p>
+            </div>
+            {% elif avg_likes_update > 0 %}
+            <div class="grid-item-stats-right">
+                <p class="num">{{avg_likes_update}}</p>
+                <p class="white">More Likes on Average This Week Compared to Last Week</p>
+            </div>
+            {% else %}
+            <div class="grid-item-stats-right" style="background-color: #1d5fd9;">
+                <p class="num">{{avg_likes_update}}</p>
+                <p class="white">Less Likes on Average This Week Compared to Last Week</p>
+            </div>
+            {% endif %}
+            {% if comments_update == None %}
+            <div class="grid-item-stats-right">
+                <p class="white">Please try again in a few minutes!</p>
+            </div>
+            {% elif comments_update > 0 %}
+            <div class="grid-item-stats-right">
+                <p class="num">{{comments_update}}</p>
+                <p class="white">More Comments This Week Compared to Last Week</p>
+            </div>
+            {% else %}
+            <div class="grid-item-stats-right" style="background-color: #1d5fd9;">
+                <p class="num">{{comments_update}}</p>
+                <p class="white">Less Comments This Week Compared to Last Week</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

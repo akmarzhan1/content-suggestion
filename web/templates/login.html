@@ -1,0 +1,50 @@
+<head>
+  <title>SuggestMe | Login</title>
+</head>
+
+{% extends "_header.html" %} {% block content %}
+
+<!--Using WTForm to show the forms for login -->
+<body style="background-image: url({{url_for('static', filename='images/background.png')}})">
+  <div class="form_login">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <h2 style="width:320px"><strong>LOGIN</strong></h2>
+      <fieldset class="form-group">
+
+        <div class="form-group">
+          {% if form.email.errors %}
+          {{form.email(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {%else%}
+          {{form.email(class="form-control form-control-lg", placeholder="Email address")}}
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {% if form.password.errors %}
+          {{form.password(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {%else%}
+          {{form.password(class="form-control form-control-lg", placeholder="Password")}}
+          {% endif %}
+        </div>
+      </fieldset>
+      <p>
+        <a href="{{url_for('auth.reset')}}">Forgot Password?</a>
+      </p>
+      <div class="input_auth['submit']">
+        {{form.submit(class="btn")}}
+      </div>
+    </form>
+  </div>
+</body>
+
+{% endblock content %}

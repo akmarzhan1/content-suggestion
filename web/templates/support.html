@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css') }}" >
+    <title>SuggestMe | Support</title>
+</head>
+
+{% from "_formhelpers.html" import render_field %}
+{% extends "_header.html" %} {% block content %}
+{{ super() }}
+
+{% include '_side-menu.html' %}
+
+<div class="right_70">    
+    <div class="left_50">
+        <h3>Contact Support</h3>
+        <form style="text-align: center" method=post action="/support">
+            {{ form.hidden_tag() }}
+            <h5 class="black">Topic</h5>
+            <p class="black">What is the topic of your issue/message?</p>
+            {{ render_field(form.topic) }}
+
+            <h5 class="black">Description</h5>
+            <p class="black">Describe your problem/message in more detail.</p>
+            {{ render_field(form.description) }}
+            {% include "_messages.html" %}
+            <p><input type=submit value="Submit">
+        </form>
+    </div>
+    <div class="right_50">
+        <h3>Contact Information</h3>
+        <br>
+        <p class="black">If you want to contact us yourself, feel free to email us at <a style="font-size:inherit; color:#1dd93b;" href="mailto:contentsuggestion@gmail.com">contentsuggestion@gmail.com</a>.</p>
+    </div>
+</div>
+
+{% endblock content %}

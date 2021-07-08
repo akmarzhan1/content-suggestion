@@ -1,0 +1,84 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css') }}" >
+    <title>SuggestMe | Settings</title>
+</head>
+
+{% from "_formhelpers.html" import render_field %}
+{% extends "_header.html" %} {% block content %}
+{{ super() }}
+
+{% include '_side-menu.html' %}
+
+<div class="right_70">
+    <div class="insights">
+        <!--TO DO: leaving the actual functionality for Lucca to implement-->
+        <div class="left_50">
+            <h4 class="green">Hello {{current_user.username}}, welcome back!</h4>
+            <h3>Your Settings</h3>
+
+            <h5 class="black">Instagram account</h5>
+            <p class="black"> Change your Instagram username below.</p>
+            <form style="text-align: center" method=post action="/update_instagram_username">
+                {{ form_update_instagram_username.hidden_tag() }}
+                {{ render_field(form_update_instagram_username.new_instagram_username, placeholder="Instagram Username") }}
+                {% include "_messages.html" %}
+              <p><input class="settings" type=submit value="Update Instagram Username">
+            </form>
+
+            <h5 class="black">Instagram password</h5>
+            <p class="black"> Change your Instagram password below.</p>
+            <form style="text-align: center" method=post action="/update_instagram_password">
+                {{ form_update_instagram_password.hidden_tag() }}
+                {{ render_field(form_update_instagram_password.new_instagram_password, placeholder="Instagram Password") }}
+                {% include "_messages.html" %}
+              <p><input class="settings" type=submit value="Update Instagram Password">
+            </form>
+
+            <h5 class="black">Email</h5>
+            <p class="black">Change your email address. Just type the new one below.</p>
+            <form style="text-align: center" method=post action="/update_email">
+                {{ form_update_email.hidden_tag() }}
+                {{ render_field(form_update_email.new_email, placeholder="Email") }}
+                {% include "_messages.html" %}
+              <p><input class="settings" type=submit value="Update Email">
+            </form>
+        </div>
+        <div class="right_50">
+            <h5 class="black">Username</h5>
+            <p class="black"> Change your username. Just type the new one below.</p>
+            <form style="text-align: center" method=post action="/update_username">
+                {{ form_update_username.hidden_tag() }}
+                {{ render_field(form_update_username.new_username, placeholder="Username") }}
+                {% include "_messages.html" %}
+              <p><input class="settings" type=submit value="Update Username">
+            </form>
+
+            <h5 class="black">Password</h5>
+            <p class="black">Change your password below. It should have:
+                <ul class="black">
+                    <li class="black">At least 8 characters - the more character, the better</li>
+                    <li class="black">A mixture of both uppercase and lowercase letters</li>
+                    <li class="black">A mixture of letters and numbers</li>
+                </ul>
+                <form style="text-align: center" method=post action="/update_password">
+                    {{ form_update_password.hidden_tag() }}
+                    {{ render_field(form_update_password.new_password, placeholder="Password") }}
+                    {{ render_field(form_update_password.new_password_confirm, placeholder="Confirm Password") }}
+                    {% include "_messages.html" %}
+                  <p><input class="settings" type=submit value="Update Password">
+                </form>
+            </p>
+
+            <h5 class="black">Delete your account</h5>
+            <p class="black">This action is irreversible. Once you delete the account, it is gone. Enter your username below and hit delete to proceed.</p>
+            <form style="text-align: center" method=post action="/delete_account">
+                {{ form_delete_account.hidden_tag() }}
+                {{ render_field(form_delete_account.username, placeholder="Username") }}
+                {% include "_messages.html" %}
+              <p><input class="settings" type=submit value="Delete Account">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

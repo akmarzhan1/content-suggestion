@@ -1,0 +1,44 @@
+<head>
+    <title>SuggestMe | About</title>
+</head>
+
+{% extends "_header.html" %} {% block content %}
+
+<body>
+    <!-- TO DO: update descriptions! -->
+    <h2 class="white"><strong>ABOUT</strong></h2>
+    <hr>
+    <p class="bottom-margin">This is a revolutionary tool for suggesting content ideas bla-bla-bla. You will be able to bla-bla bla because bla bla bla. We are the best. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+
+    <h2 class="white"><strong>INSIGHTS</strong></h2>
+    <hr>
+    <p class="bottom-margin">You will also be able to look at insights from your own profile which will give you an idea of how well you are doing. We are the best. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+
+    <div class="left">
+        <h2 class="white"><strong>TEAM</strong></h2>
+        <hr>
+        <p style="text-align: left;">We are the best team that you can ever make. There is no way anybody can outdo us. bla-bla. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+
+        <!-- TO DO: add your photos! -->
+        <div class="row">
+            <div class="column">
+            <img class="circle" src="{{ url_for('static', filename='images/akma.png') }}" alt="Akma" style="width:100%">
+            <img class="circle" src="{{ url_for('static', filename='images/favi.ico') }}" alt="Pedro" style="width:100%">
+            </div>
+
+            <div class="column">
+            <img class="circle" src="{{ url_for('static', filename='images/L.jpg') }}" alt="L" style="width:100%">
+            <img class="circle" src="{{ url_for('static', filename='images/D.png') }}" alt="Dennis" style="width:100%">
+            </div>
+
+            <div class="column">
+            <img class="circle" src="{{ url_for('static', filename='images/lucca.png') }}" alt="Lucca" style="width:100%">
+            <img class="circle" src="{{ url_for('static', filename='images/favi.ico') }}" alt="Batsal" style="width:100%">
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <img src="{{ url_for('static', filename='images/team.png') }}" style="width:100%">
+    </div>
+</body>
+{% endblock content %}

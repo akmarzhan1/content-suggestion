@@ -1,0 +1,37 @@
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+
+<body style="background-image: url({{url_for('static', filename='images/snow.png')}})">
+    {% block side_menu %}
+    <!-- left hand menu -->
+    <div class="left_30" id="left_menu">
+        <div class="menu">
+            <img class="center" src="{{ url_for('static', filename='images/logo.png') }}" alt="SuggestMe logo" style="width:150px; height:59px;">
+            <br>
+            <ul>
+                <!-- trigger loading icon on click -->
+                <a class="no_underline" href="{{url_for('settings.settings')}}" onclick="$('#loading').show()">
+                    <!-- format menu block if on settings page -->
+                    <li {% if request.path == '/settings' %} class="active" {% endif %}><img class="menu_icon" src="{{ url_for('static', filename='images/settings.png') }}"> Settings</li>
+                </a>
+                <a class="no_underline" href="{{url_for('routes.insights')}}" onclick="$('#loading').show();">
+                    <li {% if request.path == '/insights' %} class="active" {% endif %}><img class="menu_icon" src="{{ url_for('static', filename='images/insights.png') }}"> Insights</li>
+                </a>
+                <a class="no_underline" href="{{url_for('routes.suggestions')}}" onclick="$('#loading').show();">
+                    <li {% if request.path == '/suggestions' %} class="active" {% endif %}><img class="menu_icon" src="{{ url_for('static', filename='images/suggestions.png') }}"> Suggestions</li>
+                </a>
+                <a class="no_underline" href="{{url_for('routes.support')}}" onclick="$('#loading').show();">
+                    <li {% if request.path == '/support' %} class="active" {% endif %}><img class="menu_icon" src="{{ url_for('static', filename='images/support.png') }}"> Support</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
+    <!-- show loading icon -->
+    <div id="loading" style="display:none">
+        <div class="loading">
+            <h1>Loading<img src="{{ url_for('static', filename='images/loading.gif') }}" alt="loading icon"/></h1>
+        </div>
+    </div>
+</body>

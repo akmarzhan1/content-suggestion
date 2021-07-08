@@ -1,0 +1,91 @@
+.abs,
+.news .article figcaption {
+  position: absolute;
+}
+.rel,
+.news .article {
+  position: relative;
+}
+.fix {
+  position: fixed;
+}
+.dfix {
+  display: inline;
+}
+.dib {
+  display: inline-block;
+}
+.db {
+  display: block;
+}
+.dn {
+  display: none;
+}
+.df,
+.news {
+  display: flex;
+}
+.dif {
+  display: inline-flex;
+}
+.dg {
+  display: grid;
+}
+.dig {
+  display: inline-grid;
+}
+.vm {
+  vertical-align: middle;
+}
+
+.news {
+  flex-flow: row wrap;
+}
+
+.news .article {
+  overflow: hidden;
+  display: block;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+}
+.news .article img {
+  width: 100%;
+  min-height: 100%;
+  transition: 0.1s;
+}
+.news .article figcaption {
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(51,51,51,0.3);
+  color: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 40px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: rgba(6,18,53,0.6);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: 0.2s;
+}
+
+.news .article figcaption h3 {
+  color: #3792e3;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.news .article:hover img,
+.news .article:focus img,
+.news .article:active img {
+  filter: blur(3px);
+  transform: scale(0.97);
+}
+.news .article:hover figcaption,
+.news .article:focus figcaption,
+.news .article:active figcaption {
+  opacity: 1;
+  transform: none;
+}
+

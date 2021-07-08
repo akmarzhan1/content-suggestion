@@ -1,0 +1,156 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/cards.css') }}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <title>SuggestMe | Suggestions</title>
+</head>
+
+{% from "_formhelpers.html" import render_field %}
+{% extends "_header.html" %} {% block content %}
+
+{{ super() }}
+
+{% include '_side-menu.html' %}
+
+<div class="right_70">
+    <!-- suggested hashtags -->
+    <div class="left_60">
+        <h4 class="green">Hello {{current_user.username}}, welcome back!</h4>
+        <h3>Here are your latest suggestions.</h3>
+        <br>
+        <h3 class="black"><strong>Suggestions</strong></h3>
+        <p class="black">Based on your most recent activity, chosen categories and currently popular posts, we
+            suggest that you make a post associated with one or more of the following hashtags:</p>
+
+        <!-- TO DO: replace with for loop? -->
+        <div class="grid-container-4">
+            <div class="grid-item-desc">
+                <h5 class="black">Suggested hashtags</h5>
+            </div>
+            <div class="grid-item-like">
+                <h5 class="black">❤</h5>
+            </div>
+            <div class="grid-item-comment">
+                <h5 class="black">💬</h5>
+            </div>
+            <div class="grid-item-trending">
+                <h5 class="black">📈</h5>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">#travisciisstrange</h6>
+                <p class="desc">This hashtag has been used 20,000 times in the last 24 hours.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">1987</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">788</p>
+            </div>
+            <div class="grid-item-trending">
+                <p class="like">55m</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">#whatamidoingwithmylife</h6>
+                <p class="desc">This hashtag has been used 20,000 times in the last 24 hours.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">1540</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">347</p>
+            </div>
+            <div class="grid-item-trending">
+                <p class="like">14m</p>
+            </div>
+            <div class="grid-item-desc">
+                <h6 class="black">#narwhalsaretakingover</h6>
+                <p class="desc">This hashtag has been used 20,000 times in the last 24 hours.</p>
+            </div>
+            <div class="grid-item-like">
+                <p class="like">1347</p>
+            </div>
+            <div class="grid-item-comment">
+                <p class="comment">199</p>
+            </div>
+            <div class="grid-item-trending">
+                <p class="like">0.4</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- preferences -->
+    <div class="right_40">
+        <div class="preferences">
+            <h3 style="color:#16a12d; text-align:center;"><strong>Preferences</strong></h3>
+            <h5 class="white">Choose how you would like us to analyze your data. Otherwise, we will use the most
+                recently added categories.</h5>
+            <br>
+            {% if categories.count != 0 %}
+            <h4 class="green" style="display: inline;"><strong>Chosen categories: </strong></h4>
+            {% for cat in categories %}
+            {% if cat==categories[-1] %}
+            <h5 class="white" style="display: inline;"> #{{cat.keyword}}.</h5>
+            {% else %}
+            <h5 class="white" style="display: inline;"> #{{cat.keyword}},</h5>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {% endif %}
+            <hr>
+            <form style="text-align: center;" method=post action="/update_preferences">
+                {{ form_update_preferences.hidden_tag() }}
+
+                <h5 class="white" style="display:inline; float:left;">
+                    Analyze posts from your account? </h5>
+                {{ render_field(form_update_preferences.analyze)}}
+                <h5 class="white">Write the fields you are interested in as hashtags (format:
+                    "#art, #anime"):</h5>
+                <br>
+                {{ render_field(form_update_preferences.categories) }}
+                {% include "_messages.html" %}
+                <p><input class="settings" type=submit value="Update Preferences">
+            </form>
+        </div>
+    </div>  
+
+    <!-- examples -->
+    <div class='left_100'>
+        <div style="float:left;">
+        <h3><strong>Examples</strong></h3>
+        <p class="black">The following posts use the hashtags above and are very popular. Draw inspiration from
+            what these creators are doing. You can follow the link to see the original post.</p>
+
+        {% if examples == None %}
+        </div>
+        <div style="float:left;">
+            <h5 style="color:red;">Not enough data. </h5>
+            <p class="desc"> You don't have enough data for now, come back when you post more!</p>
+        </div>
+        {% else %}
+        
+        <div class="news">
+        {% for example in examples %}
+            <figure class="article">
+                <img src={{example[5]}} alt="example_image" />
+                <figcaption>
+                    <!-- TO-DO: add captions about likes and comments and author on the main image -->
+                    <p style='float:left;'>
+                        Caption: {{example[3]}}
+                    </p>
+                    <p style='float:left;'>
+                        Likes: {{example[1]}} ~~~
+                    </p>
+                    <br>
+                    <p style='float:left;'>
+                        Comments: {{example[2]}}
+                    </p>
+                    <a href={{example[4]}} class="btn" style="float:right;"> Visit Instagram</a>
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    command: "flask run --host=0.0.0.0 --port=5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "mysql+pymysql://root:test_password@172.17.0.1:3306/main"
+      FLASK_ENV: "test"
+      FLASK_APP: "."
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    networks:
+      - webnet
+    deploy:
+      restart_policy:
+        condition: "on-failure"
+        delay: 10s
+        max_attempts: 6
+        window: 60s
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: test_password
+      MYSQL_DATABASE: main
+    networks:
+      - webnet
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', '0.0.0.0', '-u', 'root', '--password=test_password']
+      timeout: 20s
+      retries: 10
+
+networks:
+  webnet:
