@@ -135,15 +135,3 @@ Then you can create forms by calling render_field(form_data, placeholder="test")
 There's also an optional extra line before submit, if you want to send 'flash' alerts to your form. 
 
 ```{% include "_messages.html" %}```
-
-## Deployment
-We will use Heroku as a tool to deploy your project, and it is FREE
-
-We added Procfile to help you deploy your repo easier, 
-but you may need to follow these steps to successfully deploy the project
-
-1. You need to have admin permission to be able to add and deploy your repo to Heroku 
-(Please ask your professor for permission)
-2. You need to create a database for your website. 
-We recommend you use [Heroku Postgres](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
-3. You may need to add environment variables to deploy successfully - [Resource](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard)
