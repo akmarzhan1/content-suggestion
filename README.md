@@ -6,6 +6,8 @@ Welcome to the Content Suggestion Team Project! You have two options to access t
 
 The link to the Heroku website: https://content-suggestion.herokuapp.com/
 
+The initial Figma prototype can be accessed here: https://www.figma.com/file/vrpi5Gtfw80gj8RYzmrxMT/CS162?node-id=8%3A162
+
 ## Run Virtual Environment
 
 Virtual environment is a key component in ensuring that the application is configured in the right environment
