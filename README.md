@@ -1,6 +1,6 @@
 # Welcome to the Content Suggestion tool
 
-Welcome to the Content Suggestion Team Project! You have two options to access this project: through Heroku and by manually downloading and running locally.
+Welcome to the Content Suggestion Team Project! This is a copy of the original repo (which is private and owned by Minerva University). You have two options to access this project: through Heroku and by manually downloading and running locally.
 
 ## Heroku Deployment
 
