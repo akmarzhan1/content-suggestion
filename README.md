@@ -1,6 +1,16 @@
 # Welcome to the Content Suggestion tool
 
-Welcome to the Content Suggestion Team Project! This is a copy of the original repo (which is private and owned by Minerva University). You have two options to access this project: through Heroku and by manually downloading and running locally.
+Welcome to the Content Suggestion Team Project! This is a copy of the original repo (which is private and owned by Minerva University). The project was co-created with couple other students and is an Instagram suggestion tool that provides account analytics and recommendations for future
+content with an automated CI/CD pipeline (on the original repo through TravisCI and Github Actions). It uses Jinja2, Bootstrap and basic CSS/HTML for the front-end, while making use of Flask, SQLAlchemy, PostgreSQL, BeautifulSoup and instagram-scraper for the back-end. There are also multiple **unit and integration tests** spanning various features. 
+
+
+Below are some screenshots from the website:
+
+![image](https://user-images.githubusercontent.com/47840436/173224967-317143cf-6687-41e2-ab27-25fb8cb5e1ec.png)
+![image](https://user-images.githubusercontent.com/47840436/173224959-09e4f161-bcd4-4647-8820-6db1b34870d6.png)
+![image](https://user-images.githubusercontent.com/47840436/173224923-bee99f09-e037-4453-993d-47bea639be80.png)
+
+You have two options to access this project: through Heroku and by manually downloading and running locally.
 
 ## Heroku Deployment
 
@@ -10,7 +20,7 @@ The initial Figma prototype can be accessed here: https://www.figma.com/file/vrp
 
 ## Run Virtual Environment
 
-Virtual environment is a key component in ensuring that the application is configured in the right environment
+Virtual environment is a key component in ensuring that the application is configured in the right environment. To run the project locally, make sure you follow the next steps:
 
 ##### Requirements
 * Python 3
